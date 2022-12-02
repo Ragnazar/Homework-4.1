@@ -8,6 +8,7 @@ import ru.hogwarts.school.repository.StudentRepository;
 
 import javax.transaction.Transactional;
 import java.util.Collection;
+import java.util.List;
 
 @Service
 public class StudentService {
@@ -47,11 +48,23 @@ public class StudentService {
     }
 
     public Collection<Student> findByNameAndAge(String name, int age) {
-        return studentRepository.findByNameIgnoreCaseAndAge(name,age);
+        return studentRepository.findByNameIgnoreCaseAndAge(name, age);
     }
 
 
     public Faculty findFaculty(Long id) {
         return facultyRepository.findByStudentsId(id);
+    }
+
+    public Integer getCount() {
+        return studentRepository.getCount();
+    }
+
+    public Double gatAverageAge() {
+        return studentRepository.getAverageAge();
+    }
+
+    public List<Student> getLastFive() {
+        return studentRepository.getLastFive();
     }
 }
